@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="model.Invitacion"	table="Invitacion">
+		<id name="id" column="inv_IdInvitacion">
+			<generator class="native" />
+		</id>
+
+		<property name="estado" column="inv_Estado" />
+
+ 		<many-to-one name="evento" lazy="false" cascade="all"> 
+ 			<column name="inv_eve_IdEvento" not-null="true"></column> 
+ 		</many-to-one> 
+		
+		<many-to-one name="usuario" lazy="false" cascade="none">
+			<column name="inv_usr_IdUsuario" not-null="true"></column>
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>
