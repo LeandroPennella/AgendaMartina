@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 CREATE USER 'noroot'@'localhost' IDENTIFIED BY PASSWORD '*B04E11FAAAE9A5A019BAF695B40F3BF1997EB194';
 --
--- Base de datos: `agenda`
+-- Base de datos: `agendaMartina`
 --
-CREATE DATABASE IF NOT EXISTS `agenda` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `agenda`;
+CREATE DATABASE IF NOT EXISTS `agendaMartina` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `agendaMartina`;
 
 -- --------------------------------------------------------
 
@@ -362,7 +362,7 @@ ADD CONSTRAINT `fk_inv_usr_IdUsuario` FOREIGN KEY (`inv_usr_IdUsuario`) REFERENC
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
-GRANT ALL PRIVILEGES ON `agenda`.* TO 'noroot'@'localhost'
+GRANT ALL PRIVILEGES ON `agendaMartina`.* TO 'noroot'@'localhost'
   IDENTIFIED BY PASSWORD '*B04E11FAAAE9A5A019BAF695B40F3BF1997EB194';
 
   

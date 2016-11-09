@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+
+	<class name="model.Evento" table="EVENTO"
+		abstract="true">
+		
+		<id name="id" column="eve_idEvento">
+			<generator class="native" />
+		</id>
+		
+		<property name="nombre" column="eve_Nombre" />
+		<property name="fecha" column="eve_Fecha" />
+		<property name="horaInicio" column="eve_HoraInicio" />
+		<property name="horaFin" column="eve_HoraFin" />
+
+
+		<many-to-one name="usuario" lazy="false" cascade="none">
+			<column name="eve_usr_IdUsuario" not-null="true"></column>
+		</many-to-one>
+		
+
+		<joined-subclass name="model.EventoPrivado"
+			table="EventoPrivado">
+			<key column="pri_IdEventoPrivado" />
+			<property name="descripcion" column="pri_Descripcion" />
+			<property name="direccion" column="pri_Direccion" />
+		</joined-subclass>
+		
+		<joined-subclass name="model.EventoReunion"
+			table="EventoReunion">
+			<key column="reu_IdEventoReunion" />
+
+			<property name="temario" column="reu_Temario" />
+			<property name="idSala" column="reu_sal_IdSala" />
+
+ 			<set name="invitaciones" table="Invitacion" inverse="true"
+				lazy="false" cascade="all, delete-orphan">
+				<key column="inv_eve_IdEvento" not-null="true" />
+				<one-to-many class="model.Invitacion" />
+			</set>
+      		
+
+		</joined-subclass>
+		
+	</class>
+</hibernate-mapping>
